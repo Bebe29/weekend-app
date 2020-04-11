@@ -1,0 +1,60 @@
+.penulis,
+.nilai {
+  text-align: left;
+  color: gray;
+  font-size: small;
+}
+
+.judul {
+  text-align: left;
+  color: black;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.sinopsis {
+  text-align: justify;
+  color: gray;
+  font-size: small;
+  word-break: normal;
+}
+
+.pricedisc {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    color: black;
+    font-size: medium;
+}
+
+.pricedisc-price {
+    display: flex;
+}
+
+.pricedisc-disc {
+    display: flex;
+    font-weight: bold;
+    padding-right: 8px;
+}
+
+.pricedisc-price {
+    display: flex;
+    text-decoration: line-through;
+    color: gray;
+}
+
+.btn {
+    border-radius: 0%;
+    padding: 10px 45px;
+    border: 1px solid rebeccapurple;
+    color: rebeccapurple;
+    font-size: medium;
+    font-weight: 500;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rebeccapurple;
+    color: white;
+    transition: background-color ease-in-out 300ms, color ease-in-out 300ms;
+}
