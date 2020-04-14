@@ -7,6 +7,9 @@ import Handmaid from "./views/image/handmaid.jpg";
 import Crazy from "./views/image/crazy.jpg";
 import Brave from "./views/image/brave.jpg";
 import Educated from "./views/image/educated.jpg";
+import CounterScreen from "./views/screen/CounterScreen";
+import InputScreen from "./views/screen/InputScreen";
+import ReactDOM from 'react-dom'
 
 function App() {
   let arrProduct = [
@@ -64,10 +67,12 @@ function App() {
   return (
     <div className="App">
       <h1>Hello World!</h1>
-      <div className="row m-0">
+      {/* <div className="row m-0">
         {renderData()}
-        {/* <div className="col-6 p-0">{renderData()}</div> */}
-      </div>
+      </div> */}
+      {/* <CounterScreen /> */}
+      <h1>Auth Screen</h1>
+      <InputScreen />
     </div>
   );
 }
