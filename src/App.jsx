@@ -9,6 +9,7 @@ import Brave from "./views/image/brave.jpg";
 import Educated from "./views/image/educated.jpg";
 import CounterScreen from "./views/screen/CounterScreen";
 import InputScreen from "./views/screen/InputScreen";
+import LifecycleScreen from "./views/screen/LifecycleScreen";
 import ReactDOM from 'react-dom'
 
 function App() {
@@ -66,13 +67,14 @@ function App() {
   };
   return (
     <div className="App">
-      <h1>Hello World!</h1>
+      {/* <h1>Hello World!</h1> */}
       {/* <div className="row m-0">
         {renderData()}
       </div> */}
       {/* <CounterScreen /> */}
-      <h1>Auth Screen</h1>
-      <InputScreen />
+      {/* <h1>Auth Screen</h1>
+      <InputScreen /> */}
+      <LifecycleScreen />
     </div>
   );
 }
