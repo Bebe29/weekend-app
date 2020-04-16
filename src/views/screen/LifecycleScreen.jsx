@@ -29,7 +29,7 @@ class LifecycleScreen extends React.Component {
   render() {
     // alert("render");
     return (
-      <div>
+      <div className="text-center">
         <h1>Lifecycle Screen</h1>
         <h2>{this.state.time.toLocaleTimeString()}</h2>
         {/* <h2>Welcome, {this.state.username}</h2>

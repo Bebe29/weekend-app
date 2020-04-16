@@ -19,7 +19,7 @@ class CounterScreen extends React.Component {
   render() {
     const {counter1, counter2, counter3} = this.state
     return (
-      <div>
+      <div className="text-center"> 
         <div className="row m-3">
           <div className="col">
             <h1>Counter 1 = {counter1}</h1>

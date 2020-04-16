@@ -1,4 +1,6 @@
 import React from "react";
+import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
+
 import logo from "./logo.svg";
 import "./App.css";
 import "./views/screen/bootstrap.css";
@@ -8,9 +10,14 @@ import Crazy from "./views/image/crazy.jpg";
 import Brave from "./views/image/brave.jpg";
 import Educated from "./views/image/educated.jpg";
 import CounterScreen from "./views/screen/CounterScreen";
+import AuthScreen from "./views/screen/AuthScreen";
 import InputScreen from "./views/screen/InputScreen";
 import LifecycleScreen from "./views/screen/LifecycleScreen";
-import ReactDOM from 'react-dom'
+import HomeScreen from "./views/screen/HomeScreen";
+import ReactDOM from "react-dom";
+import PageNotFound from "./views/screen/PageNotFound";
+import Navbar from "./views/screen/Navbar";
+import ProfileScreen from "./views/screen/ProfileScreen";
 
 function App() {
   let arrProduct = [
@@ -60,23 +67,35 @@ function App() {
     return arrProduct.map(val => {
       return (
         <div className="col-md-6 p-0">
-          <ProductItem dataProduct={val}/>
+          <ProductItem dataProduct={val} />
         </div>
       );
     });
   };
   return (
-    <div className="App">
-      {/* <h1>Hello World!</h1> */}
-      {/* <div className="row m-0">
-        {renderData()}
-      </div> */}
-      {/* <CounterScreen /> */}
-      {/* <h1>Auth Screen</h1>
-      <InputScreen /> */}
-      <LifecycleScreen />
-    </div>
+    // <div className="App">
+    //   <h1>Hello World!</h1>
+    //   <div className="row m-0">
+    //     {renderData()}
+    //   </div>
+    //   <CounterScreen />
+    //   <InputScreen />
+    //   <LifecycleScreen />
+    // </div>
+    <>
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={HomeScreen} />
+        {/* <Route path="/home" component={HomeScreen}/> */}
+        <Route exact path="/counter" component={CounterScreen} />
+        <Route exact path="/auth" component={AuthScreen} />
+        <Route exact path="/input" component={InputScreen} />
+        <Route exact path="/lifecycle" component={LifecycleScreen} />
+        <Route exact path="/profile/:username" component={ProfileScreen} />
+        <Route path="*" component={PageNotFound} />
+      </Switch>
+    </>
   );
 }
 
-export default App;
+export default withRouter(App);
