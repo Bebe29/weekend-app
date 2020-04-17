@@ -1,13 +1,16 @@
-import React from 'react'
+import React from "react";
 
-class HomeScreen extends React.Component{
-    render() {
-        return (
-            <div className="text-center">
-                <h1>Welcome Ini Home Screen</h1>
-            </div>
-        )
-    }
+class HomeScreen extends React.Component {
+  render() {
+    return (
+      <div
+        className="d-flex justify-content-around align-items-center"
+        style={{ height: "200px", fontSize: "45px", fontWeight: "bold" }}
+      >
+        Welcome!!!
+      </div>
+    );
+  }
 }
 
-export default HomeScreen
+export default HomeScreen;

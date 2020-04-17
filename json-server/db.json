@@ -1,14 +1,27 @@
 {
-    "posts": [],
-    "comments": [],
-    "users": [
-        {
-            "id":1,
-            "username": "admin",
-            "password": "password",
-            "fullName": "Admin tersayang",
-            "role": "admin"
-        }
-    ]
-  }
-  
+  "posts": [],
+  "comments": [],
+  "users": [
+    {
+      "id": 1,
+      "username": "pikachu",
+      "password": "password",
+      "role": "user",
+      "fullName": "pikachu chu"
+    },
+    {
+      "id": 2,
+      "username": "seto",
+      "password": "password",
+      "role": "user",
+      "fullName": "seto haha"
+    },
+    {
+      "username": "Bill",
+      "password": "123123123",
+      "role": "admin",
+      "fullName": "Bill Gates",
+      "id": 3
+    }
+  ]
+}
