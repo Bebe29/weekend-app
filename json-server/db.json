@@ -3,25 +3,32 @@
   "comments": [],
   "users": [
     {
-      "id": 1,
       "username": "pikachu",
       "password": "password",
       "role": "user",
-      "fullName": "pikachu chu"
+      "fullName": "pikachu chu",
+      "id": 1
     },
     {
-      "id": 2,
       "username": "seto",
       "password": "password",
       "role": "user",
-      "fullName": "seto haha"
+      "fullName": "seto haha",
+      "id": 2
     },
     {
       "username": "Bill",
-      "password": "123123123",
+      "password": "123123",
       "role": "admin",
       "fullName": "Bill Gates",
       "id": 3
+    },
+    {
+      "username": "jobs",
+      "password": "555",
+      "role": "admin",
+      "fullName": "Steve Jobs",
+      "id": 4
     }
   ]
 }

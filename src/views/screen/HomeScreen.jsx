@@ -7,7 +7,7 @@ class HomeScreen extends React.Component {
         className="d-flex justify-content-around align-items-center"
         style={{ height: "200px", fontSize: "45px", fontWeight: "bold" }}
       >
-        Welcome!!!
+        Welcome
       </div>
     );
   }

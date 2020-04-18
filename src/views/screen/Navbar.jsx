@@ -6,10 +6,10 @@ class Navbar extends React.Component {
     return (
       <div
         className="d-flex justify-content-around align-items-center"
-        style={{ height: "50px" }}
+        style={{ height: "45px" }}
       >
         <Link to="/">Home</Link>
-        <Link to="/profile">Profile</Link>
+        <Link to="/userlist">User List</Link>
         <Link to="/register">Register</Link>
         <Link to="/login">Login</Link>
       </div>

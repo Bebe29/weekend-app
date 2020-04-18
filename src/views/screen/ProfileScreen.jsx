@@ -4,77 +4,59 @@ import { API_URL } from "../../constants/API";
 
 class ProfileScreen extends React.Component {
   state = {
-    userList: []
+    userProfile: [],
+    proUser: "",
+    proFullName: "",
+    proRole: ""
   };
 
-  //   getDataHandler = () => {
-  //     Axios.get("http://localhost:3001/users", {
-  //       params: {
-  //         role: "user",
-  //         username: "pikachu"
-  //       }
-  //     })
-  //       .then(res => {
-  //         //res => respon dr API
-  //         console.log(res.data);
-  //         this.setState({ userList: res.data });
-  //         // console.log("bukan axios");
-  //         // console.log(this.state.userList);
-  //       })
-  //       .catch(err => {
-  //         //err => error
-  //         console.log(err);
-  //       });
-  //   };
-
-  deleteDataHandler = () => {
-    Axios.delete(`${API_URL}/users/1`)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  postDataHandler = () => {
-    Axios.post(`${API_URL}/users`, {
-      username: "Bill",
-      password: "123123123",
-      role: "admin",
-      fullName: "Bill Gates"
+  componentDidMount() {
+    Axios.get(`${API_URL}/users`, {
+      params: {
+        username: this.props.match.params.user
+      }
     })
       .then(res => {
-        console.log(res);
+        // console.log(res.data);
+        this.setState({ userProfile: res.data });
+        this.setState({
+          proUser: this.state.userProfile[0].username,
+          proFullName: this.state.userProfile[0].fullName,
+          proRole: this.state.userProfile[0].role
+        });
       })
       .catch(err => {
-        console.log(err);
+        Axios.get(`${API_URL}/users`, {
+          params: {
+            id: this.props.match.params.user
+          }
+        })
+          .then(res => {
+            // console.log(res.data);
+            this.setState({ userProfile: res.data });
+            this.setState({
+              proUser: this.state.userProfile[0].username,
+              proFullName: this.state.userProfile[0].fullName,
+              proRole: this.state.userProfile[0].role
+            });
+          })
+          .catch(err => {
+            // console.log(err);
+            alert("Profile Error");
+          });
       });
-  };
+  }
 
   render() {
+    const { proUser, proFullName, proRole } = this.state;
     return (
-      <div className="container">
-        <h1>Profile</h1>
-        <h2>Welcome, {this.props.match.params.pikachu}</h2>
-        <input
-          onClick={this.getDataHandler}
-          type="button"
-          value="Get data"
-          className="btn btn-success"
-        />
-        <input
-          onClick={this.deleteDataHandler}
-          type="button"
-          value="Delete data"
-          className="btn btn-danger"
-        />
-        <input
-          onClick={this.postDataHandler}
-          type="button"
-          value="Post data"
-          className="btn btn-primary"
-        />
+      <div className="d-flex justify-content-center align-item-center flex-column mt-5">
+        <center>
+          <h1 className="mb-3">Profile</h1>
+          <h4>Username: {proUser}</h4>
+          <h4>Full Name: {proFullName}</h4>
+          <h4>Role user: {proRole}</h4>
+        </center>
       </div>
     );
   }
