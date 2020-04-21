@@ -1,8 +1,8 @@
-import React from "react";
+import React, {Component} from "react";
 import Axios from "axios";
 import { API_URL } from "../../constants/API";
 
-class UserListScreen extends React.Component {
+class UserListScreen extends Component {
   state = {
     userList: []
   };

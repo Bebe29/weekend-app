@@ -2,6 +2,7 @@ import React from "react";
 import Axios from "axios";
 import { API_URL } from "../../constants/API";
 import { Redirect } from "react-router-dom";
+import swal from "sweetalert";
 
 class LoginScreen extends React.Component {
   state = {
@@ -34,7 +35,8 @@ class LoginScreen extends React.Component {
             inputPassword: ""
           });
         } else {
-          alert("User tidak ada atau password salah");
+          swal("Error!", "Username atau password salah", "error");
+          // alert("User tidak ada atau password salah");
           // this.setState({
           //   inputUsername: "",
           //   inputPassword: ""

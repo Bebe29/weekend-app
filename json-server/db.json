@@ -29,6 +29,13 @@
       "role": "admin",
       "fullName": "Steve Jobs",
       "id": 4
+    },
+    {
+      "username": "seto2",
+      "password": "222",
+      "role": "user",
+      "fullName": "seto si seto",
+      "id": 5
     }
   ]
 }

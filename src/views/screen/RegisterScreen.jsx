@@ -8,7 +8,8 @@ class RegisterScreen extends React.Component {
     regRole: "",
     regUsername: "",
     regPassword: "",
-    regRepeatPassword: ""
+    regRepeatPassword: "",
+    isLoading: false
   };
 
   inputHandler = (e, field) => {
@@ -24,55 +25,63 @@ class RegisterScreen extends React.Component {
       regFullName
     } = this.state;
 
-    Axios.get(`${API_URL}/users`, {
-      params: {
-        username: regUsername
-      }
-    })
-      .then(res => {
-        // console.log(res.data);
-        if (res.data.length == 0) {
-          if (regRepeatPassword == regPassword) {
-            Axios.post(`${API_URL}/users`, {
-              username: regUsername,
-              password: regPassword,
-              role: regRole,
-              fullName: regFullName
-            })
-              .then(res => {
-                // console.log(res);
-                this.setState({
-                  regFullName: "",
-                  regRole: "",
-                  regUsername: "",
-                  regPassword: "",
-                  regRepeatPassword: ""
-                });
-              })
-              .catch(err => {
-                // console.log(err);
-                alert("Registration Error");
-              });
-          } else {
-            alert("Password belum cocok");
-            this.setState({
-              regPassword: "",
-              regRepeatPassword: ""
-            });
-          }
-        } else {
-          alert("Username sudah ada");
-          this.setState({
-            regUsername: "",
-            regPassword: "",
-            regRepeatPassword: ""
-          });
+    this.setState({ isLoading: true });
+    setTimeout(() => {
+      Axios.get(`${API_URL}/users`, {
+        params: {
+          username: regUsername
         }
       })
-      .catch(err => {
-        // console.log(err);
-        alert("Registration Error");
-      });
+        .then(res => {
+          // console.log(res.data);
+          if (res.data.length == 0) {
+            if (regRepeatPassword == regPassword) {
+              Axios.post(`${API_URL}/users`, {
+                username: regUsername,
+                password: regPassword,
+                role: regRole,
+                fullName: regFullName
+              })
+                .then(res => {
+                  // console.log(res);
+                  this.setState({
+                    isLoading: false,
+                    regFullName: "",
+                    regRole: "",
+                    regUsername: "",
+                    regPassword: "",
+                    regRepeatPassword: ""
+                  });
+                })
+                .catch(err => {
+                  // console.log(err);
+                  alert("Registration Error");
+                  this.setState({ isLoading: false });
+                });
+            } else {
+              alert("Password belum cocok");
+              this.setState({
+                isLoading: false,
+                regPassword: "",
+                regRepeatPassword: ""
+              });
+            }
+          } else {
+            alert("Username sudah ada");
+            this.setState({
+              regUsername: "",
+              regPassword: "",
+              regRepeatPassword: "",
+              isLoading: false
+            });
+          }
+        })
+        .catch(err => {
+          // console.log(err);
+          alert("Registration Error");
+          this.setState({ isLoading: false });
+        });
+    }, 1500);
   };
 
   render() {
@@ -134,7 +143,8 @@ class RegisterScreen extends React.Component {
             className="btn btn-primary mt-2"
             type="button"
             value="Register"
-            onClick={() => this.register()}
+            onClick={this.register}
+            disabled={this.state.isLoading}
           />
         </div>
       </center>
