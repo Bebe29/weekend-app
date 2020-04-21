@@ -1,11 +1,11 @@
 const init_state = {
-  username: "Doraemon",
+  username: ``,
   id: 0
 };
 
 export default (state = init_state, action) => {
   if (action.type === "ON_CHANGE_USERNAME") {
-    return { ...state, username: action.payload };
+    return { ...state, username: `Welcome, ${action.payload}` };
   } else {
     return { ...state };
   }

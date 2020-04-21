@@ -3,6 +3,8 @@ import Axios from "axios";
 import { API_URL } from "../../constants/API";
 import { Redirect } from "react-router-dom";
 import swal from "sweetalert";
+import { connect } from "react-redux";
+import { usernameInputHandler } from "../../redux/actions/user";
 
 class LoginScreen extends React.Component {
   state = {
@@ -28,6 +30,7 @@ class LoginScreen extends React.Component {
       .then(res => {
         // console.log(res.data);
         if (res.data.length !== 0) {
+          this.props.onChangeUsername(inputUsername);
           this.setState({
             isLogin: true,
             currentUser: inputUsername,
@@ -94,4 +97,15 @@ class LoginScreen extends React.Component {
   }
 }
 
-export default LoginScreen;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+
+const mapDispatchToProps = {
+  onChangeUsername: usernameInputHandler
+};
+
+// export default LoginScreen;
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
