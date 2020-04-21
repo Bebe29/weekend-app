@@ -12,7 +12,9 @@ import ProfileScreen from "./views/screen/ProfileScreen";
 import UserListScreen from "./views/screen/UserListScreen";
 import PageNotFound from "./views/screen/PageNotFound";
 
+import InputScreen from "./views/screen/InputScreen";
 import ProfileScreencopy from "./views/screen/ProfileScreencopy";
+import TodoReduxScreen from "./views/screen/TodoReduxScreen";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route exact path="/login" component={LoginScreen} />
         <Route exact path="/profile/:user" component={ProfileScreen} />
         <Route exact path="/auth/:user" component={ProfileScreencopy} />
+        <Route exact path="/input" component={InputScreen} />
+        <Route exact path="/todo" component={TodoReduxScreen} />
         <Route path="*" component={PageNotFound} />
       </Switch>
     </>

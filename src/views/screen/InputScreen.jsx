@@ -1,5 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 class InputScreen extends React.Component {
   state = {
@@ -15,7 +16,8 @@ class InputScreen extends React.Component {
     };
 
     return (
-      <div className="text-center">
+      <div className="container">
+        <h1>{this.props.haloDunia}</h1>
         <h3>Welcome {username}</h3>
         <h3>Email: {email}</h3>
         <input
@@ -30,7 +32,7 @@ class InputScreen extends React.Component {
           placeholder="Email"
         />
         <Link to={"/profile/" + username}>
-          <input type="button" className="btn btn-primary" value="Login"/>
+          <input type="button" className="btn btn-primary" value="Login" />
         </Link>
         <br />
         <textarea
@@ -38,7 +40,7 @@ class InputScreen extends React.Component {
           id=""
           cols="30"
           rows="10"
-          onChange={() => this.setState({counter: counter+1})}
+          onChange={() => this.setState({ counter: counter + 1 })}
         ></textarea>
         <p>{counter} / 140</p>
       </div>
@@ -46,4 +48,11 @@ class InputScreen extends React.Component {
   }
 }
 
-export default InputScreen;
+const mapStateToProps = state => {
+  return {
+    haloDunia: state.user.username
+  };
+};
+
+// export default InputScreen;
+export default connect(mapStateToProps)(InputScreen);
