@@ -24,17 +24,17 @@
       "id": 3
     },
     {
-      "username": "jobs",
-      "password": "555",
-      "role": "admin",
+      "username": "Steve",
       "fullName": "Steve Jobs",
+      "password": "jobs",
+      "role": "admin",
       "id": 4
     },
     {
       "username": "seto2",
-      "password": "222",
-      "role": "user",
       "fullName": "seto si seto",
+      "password": "22",
+      "role": "user",
       "id": 5
     }
   ]

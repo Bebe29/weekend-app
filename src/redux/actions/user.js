@@ -43,3 +43,43 @@ export const loginHandler = userData => {
       });
   };
 }; //dispatch ngebuat dia ga langsung berhenti
+
+export const registerHandler = (userData, newUser) => {
+  return dispatch => {
+    const { username, password, repeatPass } = userData;
+    Axios.get(`${API_URL}/users`, {
+      params: {
+        username
+      }
+    })
+      .then(res => {
+        if (res.data.length === 0) {
+          if (repeatPass === password) {
+            Axios.post(`${API_URL}/users`, newUser)
+              .then(res => {
+                dispatch({
+                  type: "ON_REGISTER_SUCCESS",
+                  payload: newUser
+                });
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          } else {
+            dispatch({
+              type: "ON_REGISTER_FAIL",
+              payload: `Password belum cocok`
+            });
+          }
+        } else {
+          dispatch({
+            type: "ON_REGISTER_FAIL",
+            payload: `Username ${username} sudah ada`
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}; //dispatch ngebuat dia ga langsung berhenti

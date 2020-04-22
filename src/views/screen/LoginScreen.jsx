@@ -61,9 +61,9 @@ class LoginScreen extends React.Component {
   };
 
   render() {
-    // const { inputUsername, inputPassword, isLogin, currentUser } = this.state;
+    const { username, password, isLogin } = this.state;
 
-    if (!this.state.isLogin) {
+    if (!isLogin) {
       return (
         <center>
           <div
@@ -76,21 +76,19 @@ class LoginScreen extends React.Component {
             }}
           >
             <h3 className="text-center mb-3">Login</h3>
-            <p>Username: {this.props.user.username}</p>
+            <p>{this.props.user.errMsg}</p>
             <input
               className="form-control mb-2"
               type="text"
               placeholder="Username"
-              // value={inputUsername}
-              // onChange={e => this.inputHandler(e, "inputUsername")}
+              value={username}
               onChange={e => this.inputHandler(e, "username")}
             />
             <input
               className="form-control mb-2"
               type="text"
               placeholder="Password"
-              // value={inputPassword}
-              // onChange={e => this.inputHandler(e, "inputPassword")}
+              value={password}
               onChange={e => this.inputHandler(e, "password")}
             />
             <input
