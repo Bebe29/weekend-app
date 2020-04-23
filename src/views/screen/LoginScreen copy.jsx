@@ -1,19 +1,22 @@
 import React from "react";
-// import Axios from "axios";
-// import { API_URL } from "../../constants/API";
+import Axios from "axios";
+import { API_URL } from "../../constants/API";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-// import swal from "sweetalert";
-import { loginHandler } from "../../redux/actions";
+import swal from "sweetalert";
+import { usernameInputHandler, loginHandler } from "../../redux/actions";
 import Cookie from "universal-cookie";
 
 const cookieObject = new Cookie();
 
 class LoginScreen extends React.Component {
   state = {
+    // inputUsername: "",
+    // inputPassword: "",
     username: "",
     password: "",
     isLogin: false,
+    // currentUser: ""
     loginProfile: {}
   };
 
@@ -22,6 +25,36 @@ class LoginScreen extends React.Component {
   };
 
   login = () => {
+    // const { inputUsername, inputPassword } = this.state;
+    // Axios.get(`${API_URL}/users`, {
+    //   params: {
+    //     username: inputUsername,
+    //     password: inputPassword
+    //   }
+    // })
+    //   .then(res => {
+    //     // console.log(res.data);
+    //     if (res.data.length !== 0) {
+    //       this.props.onChangeUsername(inputUsername);
+    //       this.setState({
+    //         isLogin: true,
+    //         currentUser: inputUsername,
+    //         inputUsername: "",
+    //         inputPassword: ""
+    //       });
+    //     } else {
+    //       swal("Error!", "Username atau password salah", "error");
+    //       // alert("User tidak ada atau password salah");
+    //       // this.setState({
+    //       //   inputUsername: "",
+    //       //   inputPassword: ""
+    //       // });
+    //     }
+    //   })
+    //   .catch(err => {
+    //     // console.log(err);
+    //     alert("Login Error");
+    //   });
     const { username, password } = this.state;
     const userData = {
       username,
@@ -78,6 +111,8 @@ class LoginScreen extends React.Component {
       );
     } else {
       return <Redirect to={`/profile/${this.props.user.id}`} />;
+      // <div>...</div>;
+      // <Redirect to={`/profile/${this.state.loginProfile.id}`} />;
     }
   }
 }
@@ -89,7 +124,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
+  onChangeUsername: usernameInputHandler,
   onLogin: loginHandler
 };
 
+// export default LoginScreen;
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

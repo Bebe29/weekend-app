@@ -44,16 +44,22 @@ export const loginHandler = userData => {
   };
 }; //dispatch ngebuat dia ga langsung berhenti
 
-export const registerHandler = (userData, newUser) => {
+export const registerHandler = userData => {
   return dispatch => {
-    const { username, password, repeatPass } = userData;
+    const { fullName, role, username, password, repeatPass } = userData;
+    let newUser = {
+      username,
+      fullName,
+      password,
+      role
+    };
     Axios.get(`${API_URL}/users`, {
       params: {
         username
       }
     })
       .then(res => {
-        if (res.data.length === 0) {
+        if (res.data.length == 0) {
           if (repeatPass === password) {
             Axios.post(`${API_URL}/users`, newUser)
               .then(res => {
@@ -101,6 +107,27 @@ export const userKeepLogin = userData => {
           dispatch({
             type: "ON_LOGIN_FAIL",
             payload: "Username atau password salah"
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+
+export const logoutHandler = userData => {
+  return dispatch => {
+    Axios.get(`${API_URL}/users`, {
+      params: {
+        id: userData.id
+      }
+    })
+      .then(res => {
+        if (res.data.length > 0) {
+          dispatch({
+            type: "ON_LOGOUT_SUCCESS",
+            payload: ""
           });
         }
       })
