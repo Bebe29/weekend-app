@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import Cookie from "universal-cookie";
+import { connect } from "react-redux";
 
 import "./App.css";
 import "./views/screen/bootstrap.css";
@@ -17,9 +18,19 @@ import InputScreen from "./views/screen/InputScreen";
 import ProfileScreencopy from "./views/screen/ProfileScreencopy";
 import TodoReduxScreen from "./views/screen/TodoReduxScreen";
 
+import { userKeepLogin } from "./redux/actions";
+
 const cookieObject = new Cookie();
 
 class App extends React.Component {
+  componentDidMount() {
+    let cookieResult = cookieObject.get("authData");
+    // console.log(cookieResult);
+    if (cookieResult) {
+      this.props.userKeepLogin(cookieResult);
+    }
+  }
+
   render() {
     return (
       <>
@@ -40,4 +51,14 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+
+const mapDispatchToProps = {
+  userKeepLogin
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));

@@ -1,5 +1,5 @@
 const init_state = {
-  username: "Doraemon",
+  username: "",
   fullName: "",
   role: "",
   id: 0,
