@@ -13,7 +13,6 @@ class Navbar extends React.Component {
     const userData = {
       username
     };
-    // console.log(userData);
     this.props.onLogout(userData);
   };
 
